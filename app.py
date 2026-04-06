@@ -90,7 +90,7 @@ section[data-testid="stFileUploadDropzone"] {
 /* Inputs e textos menores */
 [data-testid="stSidebar"] .stMarkdown,
 [data-testid="stSidebar"] .stText {
-    color: #f9f9f7 !important;
+    color: ##3A0A0A !important;
 }
             
 /* Destaque para extensões (.csv, .xlsx) */
