@@ -123,7 +123,7 @@ def gerar_pdf_profissional(metricas: dict) -> bytes | None:
         # Descrição textual das etapas (em vez de tabela)
         etapas_texto = """
 <b>1. Seleção de Colunas</b><br/>
-Mantidas apenas as 13 colunas relevantes para análise: naturalidade, idade, sexo, raça/cor, estado civil, escolaridade, ocupação, local de ocorrência e causa básica. Colunas desnecessárias foram removidas para reduzir ruído e facilitar a análise.<br/><br/>
+Mantidas apenas as 13 colunas relevantes para análise: UF naturalidade, Cod Municipio Natural, idade, sexo, raça/cor, estado civil, escolaridade, ocupação, Municipio de residência, local de ocorrência e causa básica. Colunas desnecessárias foram removidas para reduzir ruído e facilitar a análise.<br/><br/>
 
 <b>2. Filtro por CID (Leucemia)</b><br/>
 Aplicado filtro robusto para manter <u>exclusivamente</u> registros com códigos C91, C92 ou C93 (leucemia). Todos os outros óbitos foram automaticamente removidos. Isso garante que o dataset contém apenas dados sobre leucemia.<br/><br/>
