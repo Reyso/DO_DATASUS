@@ -302,7 +302,7 @@ if arquivo:
 
                 if pdf_bytes:
                     st.download_button(
-                        label="📄 PDF",
+                        label="📄 Relatório em PDF",
                         data=pdf_bytes,
                         file_name="relatorio_tratamento_dados.pdf",
                         mime="application/pdf",
