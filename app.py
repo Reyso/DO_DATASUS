@@ -22,77 +22,98 @@ st.set_page_config(
 # ─── Estilo visual ────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap');
 
-html, body, [class*="css"] {
-    font-family: 'DM Mono', monospace;
-    background-color: #0d0d0d;
-    color: #e8e2d5;
+/* ───────── SIDEBAR BASE ───────── */
+section[data-testid="stSidebar"] {
+    background-color: #0d0d0d !important;
 }
-h1, h2, h3 { font-family: 'Syne', sans-serif; letter-spacing: -0.03em; }
 
-.header-block {
-    background: linear-gradient(135deg, #1a0a0a 0%, #2d0f0f 100%);
-    border: 1px solid #5c1a1a; border-radius: 12px;
-    padding: 2rem 2.5rem; margin-bottom: 2rem;
-}
-.header-block h1 { color: #e05c5c; font-size: 2.2rem; margin: 0 0 .4rem 0; }
-.header-block p  { color: #a08080; margin: 0; font-size: .9rem; }
-
-.metric-row { display: flex; gap: 1rem; margin: 1.5rem 0; }
-.metric-card {
-    flex: 1; background: #161616;
-    border: 1px solid #2a2a2a; border-radius: 10px; padding: 1.2rem 1.5rem;
-}
-.metric-card .label { font-size: .75rem; color: #666; text-transform: uppercase; letter-spacing: .1em; }
-.metric-card .value { font-size: 1.8rem; font-family: 'Syne', sans-serif; color: #e8e2d5; margin-top: .2rem; }
-.metric-card .sub   { font-size: .8rem; color: #888; margin-top: .2rem; }
-
-.step { display: flex; align-items: flex-start; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid #1e1e1e; font-size: .88rem; }
-.step:last-child { border-bottom: none; }
-.step-icon { font-size: 1.1rem; min-width: 1.5rem; }
-.step-text { color: #b0a090; }
-.step-ok   { color: #5ecfa0; }
-.step-err  { color: #e05c5c; }
-
-section[data-testid="stFileUploadDropzone"] {
-    background: #111 !important;
-    border: 2px dashed #3a1f1f !important;
-    border-radius: 10px !important;
-}
-.stDownloadButton > button {
-    background: #e05c5c !important; color: #fff !important;
-    border: none !important; border-radius: 8px !important;
-    font-family: 'Syne', sans-serif !important; font-weight: 700 !important;
-    font-size: 1rem !important; padding: .75rem 2rem !important; width: 100% !important;
-}
-.stDownloadButton > button:hover { background: #c94444 !important; }
-.stButton > button {
-    background: #1e1e1e !important; color: #e8e2d5 !important;
-    border: 1px solid #3a3a3a !important; border-radius: 8px !important;
-    font-family: 'DM Mono', monospace !important; font-size: .9rem !important;
-    padding: .65rem 1.5rem !important; width: 100% !important;
-}
-.stButton > button:hover { border-color: #e05c5c !important; color: #f9f9f7 !important; }
-.stDataFrame { border-radius: 8px; overflow: hidden; }
-[data-testid="stSidebar"] { background: #0d0d0d !important; border-right: 1px solid #1e1e1e !important; }
-
-/* Texto geral do sidebar */
-[data-testid="stSidebar"] * {
+/* ───────── TEXTO ───────── */
+section[data-testid="stSidebar"] * {
     color: #f9f9f7 !important;
 }
 
-/* Labels (ex: st.selectbox, st.radio) */
-[data-testid="stSidebar"] label {
-    color: #f9f9f7 !important;
+/* ───────── INPUTS (CORREÇÃO REAL) ───────── */
+
+/* Text input / number input / textarea */
+section[data-testid="stSidebar"] input,
+section[data-testid="stSidebar"] textarea {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;   /* ← FORÇA TEXTO BRANCO */
+    -webkit-text-fill-color: #ffffff !important; /* ← resolve bug de “texto apagado” */
+    border: 1px solid #3a3a3a !important;
+    border-radius: 8px !important;
 }
 
-/* Inputs e textos menores */
-[data-testid="stSidebar"] .stMarkdown,
-[data-testid="stSidebar"] .stText {
-    color: ##3A0A0A !important;
+/* Placeholder */
+section[data-testid="stSidebar"] input::placeholder,
+section[data-testid="stSidebar"] textarea::placeholder {
+    color: #888 !important;
+    opacity: 1 !important;
 }
-            
+
+/* SELECTBOX (BaseWeb) */
+section[data-testid="stSidebar"] div[data-baseweb="select"] > div {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
+/* Texto dentro do select */
+section[data-testid="stSidebar"] div[data-baseweb="select"] span {
+    color: #ffffff !important;
+}
+
+/* Dropdown */
+section[data-testid="stSidebar"] ul {
+    background-color: #1a1a1a !important;
+}
+
+section[data-testid="stSidebar"] li {
+    color: #ffffff !important;
+}
+
+section[data-testid="stSidebar"] li:hover {
+    background-color: #2a2a2a !important;
+}
+
+/* ───────── NUMBER INPUT (+ / -) ───────── */
+
+/* Container */
+section[data-testid="stSidebar"] div[data-testid="stNumberInput"] > div {
+    background-color: #1a1a1a !important;
+    border: 1px solid #3a3a3a !important;
+    border-radius: 8px !important;
+}
+
+/* Campo interno */
+section[data-testid="stSidebar"] input[type="number"] {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Botões + e - (AGORA FUNCIONA) */
+section[data-testid="stSidebar"] button {
+    color: #ffffff !important;
+    background-color: #2a2a2a !important;
+    border-left: 1px solid #3a3a3a !important;
+}
+
+/* Hover nos botões */
+section[data-testid="stSidebar"] button:hover {
+    background-color: #e05c5c !important;
+    color: #ffffff !important;
+}
+
+/* ───────── FOCUS BONITO ───────── */
+section[data-testid="stSidebar"] input:focus,
+section[data-testid="stSidebar"] textarea:focus,
+section[data-testid="stSidebar"] div[data-baseweb="select"]:focus-within {
+    border: 1px solid #e05c5c !important;
+    box-shadow: 0 0 0 2px rgba(224,92,92,0.25) !important;
+    outline: none !important;
+}
+
+
 /* Destaque para extensões (.csv, .xlsx) */
 code {
     background: #1e1e1e !important;
@@ -103,8 +124,6 @@ code {
     border: 1px solid #f9f9f7 !important;
 }
 </style>
-            
-
     
 """, unsafe_allow_html=True)
 
