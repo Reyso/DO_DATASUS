@@ -152,8 +152,12 @@ st.markdown("""
 
 # Sidebar
 with st.sidebar:
-    st.markdown("### Sobre")
-    st.markdown("""
+    st.markdown("## Versão BETA/experimental")
+    st.markdown("#### Os resultados podem conter erros. Compare com a sua base de dados original")
+    st.markdown("## Desenvolvido por [@reyso_ct](https://www.instagram.com/reyso_ct/)")
+    st.markdown("### Sobre: ")
+    st.markdown(""" 
+                
 Processa `.xlsx` ou `.csv` do SIM/DATASUS:
 - Seleção de colunas relevantes
 - Filtro por CIDs C91, C92, C93
