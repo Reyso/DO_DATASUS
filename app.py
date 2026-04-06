@@ -182,6 +182,17 @@ Processa `.xlsx` ou `.csv` do SIM/DATASUS:
 st.markdown("#### 📂 Carregar arquivo")
 st.caption("Suporta `.xlsx` e `.csv` · Arquivos grandes (>50 MB): prefira CSV")
 
+# Instrução sobre conversão de DBF
+st.info("""
+**📌 Se seus dados são em formato DBF (arquivo .dbf):**
+1. Abra o arquivo no Microsoft Excel
+2. Clique em **"Arquivo → Salvar como"**
+3. Escolha o formato: **"CSV (separado por vírgulas)"** ou **"UTF-8"**
+4. Salve o arquivo e faça upload aqui
+
+Essa conversão garante compatibilidade e melhor processamento!
+""")
+
 arquivo = st.file_uploader(
     "Arraste ou clique para selecionar",
     type=["xlsx", "xls", "csv"],
