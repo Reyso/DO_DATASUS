@@ -289,7 +289,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 with st.sidebar:
-    st.markdown("### Sobre")
+    st.markdown("### Sobre    Desenvolvido por @reyso_ct")
     st.markdown("""
 Processa `.xlsx` ou `.csv` do SIM/DATASUS:
 - Seleção de colunas relevantes
