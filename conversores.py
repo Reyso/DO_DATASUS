@@ -20,8 +20,8 @@ def convert_raca_cor(raca):
 def convert_estciv(estciv):
     if pd.isna(estciv): return np.nan
     try:
-        return {1:"Solteiro",2:"Casado",3:"Viuvo",
-                4:"Divorciado",5:"Uniao Estavel",9:"Ignorado"}.get(int(estciv), np.nan)
+        return {1:"Solteiro(a)",2:"Casado(a)",3:"Viuvo(a)",
+                4:"Divorciado(a)",5:"Uniao Estavel",9:"Ignorado"}.get(int(estciv), np.nan)
     except: return np.nan
 
 

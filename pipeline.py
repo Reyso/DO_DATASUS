@@ -20,8 +20,8 @@ from conversores import (
 # ─── Constantes ───────────────────────────────────────────────────────────────
 
 COLUNAS = [
-    "NATURAL","CODMUNNATU","IDADE","SEXO","RACACOR","ESTCIV",
-    "ESC2010","OCUP","CODMUNRES","LOCOCOR","CODMUNOCOR","CAUSABAS","STDONOVA"
+    "IDADE","SEXO","RACACOR","DTOBITO","CAUSABAS","NATURAL","CODMUNNATU","ESTCIV",
+    "ESC2010","OCUP","CODMUNRES","LOCOCOR","CODMUNOCOR"
 ]
 
 CIDS = (
@@ -70,7 +70,8 @@ def tratar_chunk(df: pd.DataFrame) -> pd.DataFrame:
     df["CODMUNOCOR"] = df["CODMUNOCOR"].astype(str).str.zfill(7)
     df["UF_NATURAL"] = df["NATURAL"].str[-2:].map(MAPA_UF)
     df["UF_OCOR"]    = df["CODMUNOCOR"].str[1:3].map(MAPA_UF)
-
+    
+    df.drop(columns=["NATURAL"])
     # Passo 10 – LOCOCOR
     df["LOCOCOR_DESC"] = df["LOCOCOR"].astype(str).str.strip().map(MAPA_LOCOCOR)
 

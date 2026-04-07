@@ -139,9 +139,9 @@ def tratar_obitos_leucemia(caminho_arquivo: str) -> pd.DataFrame | None:
 
     # ── Passo 1 – Selecionar colunas ─────────────────────────────────────────
     colunas = [
-        "NATURAL", "CODMUNNATU", "IDADE", "SEXO", "RACACOR", "ESTCIV",
+        "DTOBITO","NATURAL", "CODMUNNATU", "IDADE", "SEXO", "RACACOR", "ESTCIV",
         "ESC2010", "OCUP", "CODMUNRES", "LOCOCOR", "CODMUNOCOR",
-        "CAUSABAS", "STDONOVA"
+        "CAUSABAS"
     ]
     colunas_existentes = [c for c in colunas if c in df.columns]
     colunas_ausentes   = [c for c in colunas if c not in df.columns]
@@ -152,6 +152,7 @@ def tratar_obitos_leucemia(caminho_arquivo: str) -> pd.DataFrame | None:
     try:
         df = df[colunas_existentes]
         log.info("Passo 1 ✅ – %d colunas selecionadas.", len(colunas_existentes))
+        # log.inf("\n %d",{colunas})
     except Exception as e:
         log.error("Passo 1 ❌ – Erro ao selecionar colunas: %s", e)
         return None
@@ -238,9 +239,11 @@ def tratar_obitos_leucemia(caminho_arquivo: str) -> pd.DataFrame | None:
         df["CODMUNOCOR"]  = df["CODMUNOCOR"].astype(str).str.zfill(7)
         df["UF_NATURAL"]  = df["NATURAL"].str[-2:].map(mapa_uf)
         df["UF_OCOR"]     = df["CODMUNOCOR"].str[1:3].map(mapa_uf)
+        df.drop(columns = ['NATURAL'])
         log.info("Passo 9 ✅ – UF_NATURAL e UF_OCOR criadas.")
         log.debug("UF_NATURAL nulos: %d | UF_OCOR nulos: %d",
                   df["UF_NATURAL"].isna().sum(), df["UF_OCOR"].isna().sum())
+        
     except Exception as e:
         log.error("Passo 9 ❌ – Erro ao tratar localidade: %s", e)
 
@@ -255,9 +258,11 @@ def tratar_obitos_leucemia(caminho_arquivo: str) -> pd.DataFrame | None:
         "9": "Ignorado",
     }
     try:
-        df["LOCOCOR_DESC"] = df["LOCOCOR"].astype(str).str.strip().map(mapa_lococor)
-        log.info("Passo 10 ✅ – LOCOCOR_DESC criada. Valores únicos: %s",
-                 df["LOCOCOR_DESC"].unique().tolist())
+        df["LOCOCOR"] = df["LOCOCOR"].astype(str).str.strip().map(mapa_lococor)
+        log.info("Passo 10 ✅ – LOCOCOR atualizada. Valores únicos: %s",
+                 df["LOCOCOR"].unique().tolist())
+        
+        # df.drop(columns = ["LOCOCOR"])
     except Exception as e:
         log.error("Passo 10 ❌ – Erro ao tratar LOCOCOR: %s", e)
 
