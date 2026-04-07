@@ -167,6 +167,7 @@ Processa `.xlsx` ou `.csv` do SIM/DATASUS:
 - Conversão de ESC2010
 - Criação de UF_NATURAL e UF_OCOR
 - Descrição de LOCOCOR
+- Relatório do processamento realizado
 """)
     st.divider()
     st.markdown("### ⚙️ Configuração")
